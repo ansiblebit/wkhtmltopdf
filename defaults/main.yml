@@ -1,0 +1,6 @@
+wkhtmltopdf_version_main: "0.12"
+wkhtmltopdf_version_full: "0.12.2.1"
+
+# "amd64" or "i386".
+wkhtmltopdf_architecture: "amd64"
+

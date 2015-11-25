@@ -1,0 +1,27 @@
+- name: "Ensure dependencies are installed"
+  yum: >
+    name={{ item }}
+    state=present
+  with_items:
+    - xorg-x11-fonts-Type1
+    - xorg-x11-fonts-75dpi
+  tags:
+    - wkhtmltopdf
+    - pkgs
+
+- name: "Download deb file for wkhtmltopdf"
+  get_url: >
+    url="http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_version_main }}/{{ wkhtmltopdf_version_full }}/wkhtmltox-{{ wkhtmltopdf_version_full }}_linux-centos{{ansible_distribution_major_version}}-{{ wkhtmltopdf_architecture }}.rpm"
+    dest="/tmp/wkhtmltox-{{ wkhtmltopdf_version_full }}_linux-centos{{ansible_distribution_major_version}}-{{ wkhtmltopdf_architecture }}.rpm"
+  tags:
+    - wkhtmltopdf
+    - pkgs
+
+- name: "Ensure wkhtmltopdf is installed"
+  yum: >
+    name="/tmp/wkhtmltox-{{ wkhtmltopdf_version_full }}_linux-centos{{ansible_distribution_major_version}}-{{ wkhtmltopdf_architecture }}.rpm"
+    state=present
+    disable_gpg_check=yes
+  tags:
+    - wkhtmltopdf
+    - pkgs

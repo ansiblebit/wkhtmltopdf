@@ -1,0 +1,12 @@
+name: "Aeriscloud.wkhtmltopdf"
+playbook:
+- hosts: all
+  sudo: true
+  roles:
+  - role: "@ROLE_NAME@"
+  post_tasks:
+  - stat: path=/usr/local/bin/wkhtmltopdf
+    register: binary
+  - debug: var=binary
+  - fail: msg="wkhtmltopdf is not installed"
+    when: not binary.stat.exists
