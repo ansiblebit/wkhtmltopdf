@@ -36,9 +36,8 @@ it has diverged significantly from the original work.
 
 ## Role Variables
 
-- **wkhtmltopdf_version_main**:
-- **wkhtmltopdf_version_full**:
-- **wkhtmltopdf_architecture**:
+- **wkhtmltopdf_version**: version to be installed.
+- **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
 
 
 ## Dependencies
