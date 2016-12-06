@@ -36,6 +36,9 @@ it has diverged significantly from the original work.
 ## Role Variables
 
 - **debug**: flag to run debug tasks.
+- **wkhtmltopdf_dir_src**: directory where to store the source tarball.
+- **wkhtmltopdf_slug**: git repository slug to be cloned.
+- **wkhtmltopdf_user**: account used to build the software.
 - **wkhtmltopdf_version**: version to be installed.
 - **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
 
@@ -58,8 +61,8 @@ None.
 ## Tags
 
 - **configuration**: configuration tasks.
+- **build**: build tasks.
 - **debug**: task to debug role variables.
-- **installation**: installation tasks.
 - **validation**: task to validate role variables.
 
 
