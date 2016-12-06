@@ -35,6 +35,7 @@ it has diverged significantly from the original work.
 
 ## Role Variables
 
+- **debug**: flag to run debug tasks.
 - **wkhtmltopdf_version**: version to be installed.
 - **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
 
