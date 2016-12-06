@@ -4,7 +4,7 @@
 # build tasks.
 #
 
-- name: build | clone wkhtmltopdf/wkhtmltopdf repository
+- name: build | clone wkhtmltopdf repository
   git:
     repo: git://github.com/{{ wkhtmltopdf_slug }}.git
     dest: "{{ wkhtmltopdf_dir_src }}"
