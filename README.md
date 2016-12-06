@@ -45,7 +45,7 @@ it has diverged significantly from the original work.
 
 ## Dependencies
 
-None.
+- [ansiblebit/git]
 
 
 ## Playbooks
@@ -108,5 +108,6 @@ $ vagrant ssh trusty64.vagrant.dev
 
 
 [ansible]:  https://ansible.com/    "Ansible"
+[ansiblebit/git]:  https://github.com/ansiblebit/git    "ansiblebit/git"
 [AerisCloud/ansible-wkhtmltopdf]: https://AerisCloud/ansible-wkhtmltopdf "AerisCloud/ansible-wkhtmltopdf"
 [wkhtmltopdf]: http://wkhtmltopdf.org/  "wkhtmltopdf"
