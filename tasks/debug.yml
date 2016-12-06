@@ -1,0 +1,13 @@
+---
+# file: wkhtmltopdf/tasks/debug.yml
+#
+# debug tasks.
+#
+
+- name: debug
+  debug:
+    var="{{ item }}"
+  when: "{{ item }} is defined"
+  with_items:
+    - wkhtmltopdf_mm_version
+    - wkhtmltopdf_version
