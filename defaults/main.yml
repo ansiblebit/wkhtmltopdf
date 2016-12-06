@@ -1,6 +1,7 @@
-wkhtmltopdf_version_main: "0.12"
-wkhtmltopdf_version_full: "0.12.2.1"
+---
+# file: wkhtmltopdf/defaults/main.yml
+#
 
-# "amd64" or "i386".
-wkhtmltopdf_architecture: "amd64"
+wkhtmltopdf_version: 0.12.4
 
+wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:1] }}"
