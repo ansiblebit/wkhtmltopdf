@@ -1,0 +1,26 @@
+---
+# file: wkhtmltopdf/tests/test.yml
+
+- name: setup python2
+  hosts: "{{ vagrant_box }}"
+  gather_facts: no
+
+  tasks:
+    - raw: sudo apt-get update -qq && sudo apt-get install -qq python2.7
+      when: playbook_python2 is defined and
+            playbook_python2
+
+
+- name: tests play
+  hosts: "{{ vagrant_box }}"
+  gather_facts: yes
+
+  vars:
+    debug: yes
+
+  roles:
+    - role: wkhtmltopdf
+
+    - role: tests
+      tags: test
+
