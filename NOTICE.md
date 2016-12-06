@@ -1,4 +1,4 @@
-Copyright 2016 Pedro Salgado
+Copyright 2016 ansiblebit
 
 This role used [AerisCloud]'s wkhtmltopdf role as a starting point.
 It can be obtained at [AerisCloud/ansible-wkhtmltopdf] and
