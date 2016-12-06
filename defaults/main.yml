@@ -2,6 +2,9 @@
 # file: wkhtmltopdf/defaults/main.yml
 #
 
+wkhtmltopdf_dir_src: "{{ ansible_env.HOME }}"
+wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
+wkhtmltopdf_user: "{{ ansible_env.USER }}"
 wkhtmltopdf_version: 0.12.4
 
 wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
