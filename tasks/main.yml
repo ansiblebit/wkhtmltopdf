@@ -1,5 +1,10 @@
-- include: centos.yml
-  when: ansible_distribution == 'CentOS'
+---
+# file: wkhtmltopdf/tasks/main.yml
+#
 
-- include: debian.yml
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- include: debug.yml
+  when: debug | default(false)
+  tags: debug
+
+- include: validation.yml
+  tags: validation
