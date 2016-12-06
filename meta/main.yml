@@ -1,18 +1,24 @@
+---
+# file: wkhtmltopdf/meta/main.yml
+#
+# meta file
+#
 galaxy_info:
-  author: Frank Lee <flee@wizcorp.jp>
-  description: Installs wkhtmltopdf on a server
-  company: Wizcorp K.K.
-  license: MIT
-  min_ansible_version: 1.9.4
+  author: Pedro Salgado
+  description: Ansible role to install wkhtmltopdf.
+  company: ansiblebit.org
+  license: BSD
+  min_ansible_version: 2.0
   platforms:
-    - name: EL
-      versions:
-        - 6
-        - 7
     - name: Debian
       versions:
-        - wheezy
         - jessie
-  categories:
-    - development
-    - system
+        - wheezy
+    - name: Ubuntu
+      versions:
+        - xenial
+        - trusty
+        - precise
+  galaxy_tags:
+    - wkhtmltopdf
+dependencies: []
