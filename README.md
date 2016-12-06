@@ -52,7 +52,7 @@ None.
         see tests/vars/vagrant.yml
     
       roles:
-         - role: ansiblebit.httpd
+         - role: ansiblebit.wkhtmltopdf
 
 
 ## Tags
