@@ -10,8 +10,7 @@
 
 [Ansible][ansible] role to install [wkhtmltopdf].
 
-This repo was a fork of
-[AerisCloud/ansible-wkhtmltopdf](https://github.com/AerisCloud/ansible-wkhtmltopdf) but,
+This repo was a fork of [AerisCloud/ansible-wkhtmltopdf] but,
 currently,
 it has diverged significantly from the original work.
 
@@ -105,4 +104,5 @@ $ vagrant ssh trusty64.vagrant.dev
 
 
 [ansible]:  https://ansible.com/    "Ansible"
+[AerisCloud/ansible-wkhtmltopdf]: https://AerisCloud/ansible-wkhtmltopdf "AerisCloud/ansible-wkhtmltopdf"
 [wkhtmltopdf]: http://wkhtmltopdf.org/  "wkhtmltopdf"
