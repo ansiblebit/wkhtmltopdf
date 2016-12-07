@@ -9,17 +9,43 @@
     repo: git://github.com/{{ wkhtmltopdf_slug }}.git
     dest: "{{ wkhtmltopdf_dir_src }}"
     version: "{{ wkhtmltopdf_version }}"
-    recursive: yes
-    track_submodules: yes
+    recursive: no
     depth: 1
   become_user: "{{ wkhtmltopdf_user }}"
   become: yes
 
-- name: build | set repo ownership
-  file:
-    path="{{ wkhtmltopdf_dir_src }}"
-    owner="{{ wkhtmltopdf_user }}"
-    group="{{ wkhtmltopdf_user }}"
-    state=directory
-    recurse=yes
+- name: build | set qt submodule shallowness
+  git_config:
+    scope: local
+    repo: "{{ wkhtmltopdf_dir_src }}"
+    name: submodule.qt.shallow
+    value: true
+  become_user: "{{ wkhtmltopdf_user }}"
+  become: yes
+
+- name: build | clone qt submodule
+  git:
+    repo: git://github.com/{{ wkhtmltopdf_slug }}.git
+    dest: "{{ wkhtmltopdf_dir_src }}"
+    version: "{{ wkhtmltopdf_version }}"
+    recursive: yes
+    depth: 1
+  become_user: "{{ wkhtmltopdf_user }}"
+  become: yes
+
+- name: build | setup chroot environment
+  shell: scripts/build.py setup-schroot-generic
+  args:
+    chdir: "{{ wkhtmltopdf_dir_src }}"
+  environment:
+    WKHTMLTOX_CHROOT: "{{ wkhtmltopdf_dir_chroot }}"
+  become: yes
+
+- name: build | build binaries
+  shell: "scripts/build.py linux-generic-{{ wkhtmltopdf_architecture }}"
+  args:
+    chdir: "{{ wkhtmltopdf_dir_src }}"
+  environment:
+    WKHTMLTOX_CHROOT: "{{ wkhtmltopdf_dir_chroot }}"
+  become_user: "{{ wkhtmltopdf_user }}"
   become: yes
