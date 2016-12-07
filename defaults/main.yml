@@ -15,3 +15,4 @@ wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
 wkhtmltopdf_build: tarball
 wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
 wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
+wkhtmltopdf_force_build: no
