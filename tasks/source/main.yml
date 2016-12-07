@@ -1,7 +1,7 @@
 ---
-# file: wkhtmltopdf/tasks/build/main.yml
+# file: wkhtmltopdf/tasks/source/main.yml
 #
-# build tasks.
+# tasks to install wkhtmltopdf using source.
 #
 
 - name: build | install build dependencies

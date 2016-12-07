@@ -1,5 +1,5 @@
 ---
-# file: wkhtmltopdf/tasks/build/git.yml
+# file: wkhtmltopdf/tasks/source/git.yml
 #
 # setup source using git.
 #

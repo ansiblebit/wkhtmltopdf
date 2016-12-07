@@ -1,5 +1,5 @@
 ---
-# file: wkhtmltopdf/tasks/build/main.yml
+# file: wkhtmltopdf/tasks/source/main.yml
 #
 # setup source using tarball.
 #
