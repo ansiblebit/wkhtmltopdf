@@ -1,0 +1,34 @@
+---
+# file: wkhtmltopdf/tasks/build/git.yml
+#
+# setup source using git.
+#
+
+- name: build | git | clone wkhtmltopdf repository
+  git:
+    repo: git://github.com/{{ wkhtmltopdf_slug }}.git
+    dest: "{{ wkhtmltopdf_dir_source }}"
+    version: "{{ wkhtmltopdf_version }}"
+    recursive: no
+    depth: 1
+  become_user: "{{ wkhtmltopdf_user }}"
+  become: yes
+
+- name: build | git | set qt submodule shallowness
+  git_config:
+    scope: local
+    repo: "{{ wkhtmltopdf_dir_source }}"
+    name: submodule.qt.shallow
+    value: true
+  become_user: "{{ wkhtmltopdf_user }}"
+  become: yes
+
+- name: build | git | clone qt submodule
+  git:
+    repo: git://github.com/{{ wkhtmltopdf_slug }}.git
+    dest: "{{ wkhtmltopdf_dir_source }}"
+    version: "{{ wkhtmltopdf_version }}"
+    recursive: yes
+    depth: 1
+  become_user: "{{ wkhtmltopdf_user }}"
+  become: yes

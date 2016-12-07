@@ -1,0 +1,34 @@
+---
+# file: wkhtmltopdf/tasks/build/main.yml
+#
+# setup source using tarball.
+#
+
+- name: build | tarball | download
+  get_url:
+    url="{{ wkhtmltopdf_download_url }}"
+    dest="{{ ansible_env.HOME }}/{{ wkhtmltopdf_tarball }}"
+    owner="{{ wkhtmltopdf_user }}"
+    group="{{ wkhtmltopdf_user }}"
+    mode=0440
+    validate_certs=no
+  become: yes
+  register: task_wkhtmltopdf_download
+
+- name: build | tarball | ensure source directory is present
+  file:
+    path="{{ wkhtmltopdf_dir_source }}"
+    owner="{{ wkhtmltopdf_user }}"
+    group="{{ wkhtmltopdf_user }}"
+    state=directory
+  become: yes
+
+- name: build | tarball | unarchive
+  unarchive:
+    src="{{ ansible_env.HOME }}/{{ wkhtmltopdf_tarball }}"
+    dest="{{ wkhtmltopdf_dir_source }}"
+    copy=no
+    owner="{{ wkhtmltopdf_user }}"
+    group="{{ wkhtmltopdf_user }}"
+  when: task_wkhtmltopdf_download.changed or wkhtmltopdf_force_build
+  become: yes
