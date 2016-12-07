@@ -5,8 +5,13 @@
 wkhtmltopdf_architecture: amd64
 wkhtmltopdf_dir_chroot: /var/chroot
 wkhtmltopdf_dir_src: "{{ ansible_env.HOME }}/wkhtmltopdf"
+
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
 wkhtmltopdf_user: "{{ ansible_env.USER }}"
 wkhtmltopdf_version: 0.12.4
 
 wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
+
+wkhtmltopdf_build: tarball
+wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
+wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"

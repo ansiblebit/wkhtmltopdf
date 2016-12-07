@@ -10,9 +10,12 @@
   when: "{{ item }} is not defined"
   with_items:
     - wkhtmltopdf_architecture
+    - wkhtmltopdf_build
     - wkhtmltopdf_dir_chroot
     - wkhtmltopdf_dir_src
+    - wkhtmltopdf_download_url
     - wkhtmltopdf_mm_version
     - wkhtmltopdf_slug
+    - wkhtmltopdf_tarball
     - wkhtmltopdf_user
     - wkhtmltopdf_version
