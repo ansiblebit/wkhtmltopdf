@@ -36,7 +36,7 @@ it has diverged significantly from the original work.
 ## Role Variables
 
 - **debug**: flag to run debug tasks.
-- **wkhtmltopdf_installation**: installation process (`build` or `package`).
+- **wkhtmltopdf_installation**: installation process (`package` or `source`).
 - **wkhtmltopdf_version**: version to be installed.
 - **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
 

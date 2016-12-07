@@ -18,6 +18,7 @@
   vars:
     debug: yes
     git_version: 2.11.0
+    wkhtmltopdf_installation: source
     wkhtmltopdf_build: tarball
     wkhtmltopdf_force_build: yes
 

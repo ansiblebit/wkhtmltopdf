@@ -16,7 +16,7 @@
   fail:
     msg="wkhtmltopdf_installation needs to be set to build or package ({{ wkhtmltopdf_installation }})"
   when: wkhtmltopdf_installation == 'package' or
-        wkhtmltopdf_installation == 'build'
+        wkhtmltopdf_installation == 'source'
 
 - name: ensure build mandatory variables are set
   fail:
