@@ -4,12 +4,18 @@
 # build tasks.
 #
 
+- name: build | install build dependencies
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
+  with_items:
+    - "{{ wkhtmltopdf_build_dependencies }}"
+  become: yes
+
 - include: "{{ wkhtmltopdf_build }}.yml"
 
 - name: build | setup chroot environment
   shell: scripts/build.py setup-schroot-generic
   args:
-    chdir: "{{ wkhtmltopdf_dir_source }}"
+    chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
     WKHTMLTOX_CHROOT: "{{ wkhtmltopdf_dir_chroot }}"
   become: yes
@@ -17,7 +23,7 @@
 - name: build | build binaries
   shell: "scripts/build.py linux-generic-{{ wkhtmltopdf_architecture }}"
   args:
-    chdir: "{{ wkhtmltopdf_dir_source }}"
+    chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
     WKHTMLTOX_CHROOT: "{{ wkhtmltopdf_dir_chroot }}"
   become_user: "{{ wkhtmltopdf_user }}"
