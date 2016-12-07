@@ -36,6 +36,8 @@ it has diverged significantly from the original work.
 ## Role Variables
 
 - **debug**: flag to run debug tasks.
+- **wkhtmltopdf_architecture**: architecture (`i386` or `amd64`).
+- **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_src**: directory where to store the source tarball.
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_user**: account used to build the software.

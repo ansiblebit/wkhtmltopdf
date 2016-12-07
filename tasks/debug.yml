@@ -9,6 +9,8 @@
     var="{{ item }}"
   when: "{{ item }} is defined"
   with_items:
+    - wkhtmltopdf_architecture
+    - wkhtmltopdf_dir_chroot
     - wkhtmltopdf_dir_src
     - wkhtmltopdf_mm_version
     - wkhtmltopdf_slug

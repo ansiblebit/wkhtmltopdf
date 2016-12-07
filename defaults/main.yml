@@ -2,6 +2,8 @@
 # file: wkhtmltopdf/defaults/main.yml
 #
 
+wkhtmltopdf_architecture: amd64
+wkhtmltopdf_dir_chroot: /var/chroot
 wkhtmltopdf_dir_src: "{{ ansible_env.HOME }}/wkhtmltopdf"
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
 wkhtmltopdf_user: "{{ ansible_env.USER }}"
