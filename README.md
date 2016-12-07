@@ -40,6 +40,7 @@ it has diverged significantly from the original work.
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
+- **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
 - **wkhtmltopdf_download_url**: URL to download tarball.
 - **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
