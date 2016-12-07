@@ -4,31 +4,3 @@
 
 wkhtmltopdf_installation: package
 wkhtmltopdf_version: 0.12.4
-
-
-### build
-
-wkhtmltopdf_architecture: amd64
-
-wkhtmltopdf_build: tarball
-wkhtmltopdf_build_dependencies:
-  - build-essential
-  - libssl-dev
-  - openssl
-  - xorg
-
-wkhtmltopdf_dir_chroot: /var/chroot
-wkhtmltopdf_dir_install: /usr/bin
-wkhtmltopdf_dir_source: "{{ ansible_env.HOME }}"
-wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtmltopdf_version }}"
-
-wkhtmltopdf_force_build: no
-
-wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
-wkhtmltopdf_user: "{{ ansible_env.USER }}"
-
-
-wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
-
-wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
-wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
