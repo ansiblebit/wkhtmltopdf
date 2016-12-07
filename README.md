@@ -39,8 +39,9 @@ it has diverged significantly from the original work.
 - **wkhtmltopdf_architecture**: architecture (`i386` or `amd64`).
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
-- **wkhtmltopdf_dir_src**: directory where to store the source tarball.
+- **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_download_url**: URL to download tarball.
+- **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
 - **wkhtmltopdf_user**: account used to build the software.

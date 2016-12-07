@@ -12,7 +12,7 @@
     - wkhtmltopdf_architecture
     - wkhtmltopdf_build
     - wkhtmltopdf_dir_chroot
-    - wkhtmltopdf_dir_src
+    - wkhtmltopdf_dir_source
     - wkhtmltopdf_download_url
     - wkhtmltopdf_force_build
     - wkhtmltopdf_mm_version
