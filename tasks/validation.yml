@@ -10,6 +10,7 @@
   when: "{{ item }} is not defined"
   with_items:
     - wkhtmltopdf_installation
+    - wkhtmltopdf_mm_version
     - wkhtmltopdf_version
 
 - name: ensure wkhtmltopdf_installation is set to a valid value
@@ -32,7 +33,6 @@
     - wkhtmltopdf_dir_source_version
     - wkhtmltopdf_download_url
     - wkhtmltopdf_force_build
-    - wkhtmltopdf_mm_version
     - wkhtmltopdf_slug
     - wkhtmltopdf_tarball
     - wkhtmltopdf_user
