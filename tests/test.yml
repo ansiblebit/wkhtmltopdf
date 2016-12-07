@@ -19,6 +19,7 @@
     debug: yes
     git_version: 2.11.0
     wkhtmltopdf_build: tarball
+    wkhtmltopdf_force_build: yes
 
   roles:
     - role: wkhtmltopdf
