@@ -9,10 +9,25 @@
     msg="{{ item }} is a mandatory variable"
   when: "{{ item }} is not defined"
   with_items:
+    - wkhtmltopdf_installation
+    - wkhtmltopdf_version
+
+- name: ensure wkhtmltopdf_installation is set to a valid value
+  fail:
+    msg="wkhtmltopdf_installation needs to be set to build or package ({{ wkhtmltopdf_installation }})"
+  when: wkhtmltopdf_installation == 'package' or
+        wkhtmltopdf_installation == 'build'
+
+- name: ensure build mandatory variables are set
+  fail:
+    msg="{{ item }} is a mandatory variable"
+  when: "{{ item }} is not defined"
+  with_items:
     - wkhtmltopdf_architecture
     - wkhtmltopdf_build
     - wkhtmltopdf_build_dependencies
     - wkhtmltopdf_dir_chroot
+    - wkhtmltopdf_dir_install
     - wkhtmltopdf_dir_source
     - wkhtmltopdf_dir_source_version
     - wkhtmltopdf_download_url
@@ -21,4 +36,3 @@
     - wkhtmltopdf_slug
     - wkhtmltopdf_tarball
     - wkhtmltopdf_user
-    - wkhtmltopdf_version
