@@ -28,3 +28,12 @@
     WKHTMLTOX_CHROOT: "{{ wkhtmltopdf_dir_chroot }}"
   become_user: "{{ wkhtmltopdf_user }}"
   become: yes
+
+- name: build | copy binaries
+  copy:
+    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-amd64/app/bin"
+    dest="{{ wkhtmltopdf_dir_install }}"
+    owner=root
+    group=root
+    mode=0755
+  become: yes
