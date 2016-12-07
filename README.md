@@ -36,10 +36,20 @@ it has diverged significantly from the original work.
 ## Role Variables
 
 - **debug**: flag to run debug tasks.
+- **wkhtmltopdf_installation**: installation process (`build` or `package`).
+- **wkhtmltopdf_version**: version to be installed.
+- **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
+
+
+### build
+
+Variables used in the `build` installation process.
+
 - **wkhtmltopdf_architecture**: architecture (`i386` or `amd64`).
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_build_dependencies**: list of packages needed to build the software.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
+- **wkhtmltopdf_dir_install**: directory where the wkhtmltox commands will be installed.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
 - **wkhtmltopdf_download_url**: URL to download tarball.
@@ -47,8 +57,6 @@ it has diverged significantly from the original work.
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
 - **wkhtmltopdf_user**: account used to build the software.
-- **wkhtmltopdf_version**: version to be installed.
-- **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
 
 
 ## Dependencies
