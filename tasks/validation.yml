@@ -11,6 +11,7 @@
   with_items:
     - wkhtmltopdf_architecture
     - wkhtmltopdf_build
+    - wkhtmltopdf_build_dependencies
     - wkhtmltopdf_dir_chroot
     - wkhtmltopdf_dir_source
     - wkhtmltopdf_dir_source_version
