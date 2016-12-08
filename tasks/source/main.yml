@@ -52,8 +52,9 @@
 
 - name: build | copy binaries
   copy:
-    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-amd64/app/bin/{{ item }}"
+    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-{{ wkhtmltopdf_architecture }}/app/bin/{{ item }}"
     dest="{{ wkhtmltopdf_dir_install }}"
+    remote_src=yes
     owner=root
     group=root
     mode=0755
