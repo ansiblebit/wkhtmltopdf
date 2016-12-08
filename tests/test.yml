@@ -48,6 +48,8 @@
 
   roles:
     - role: wkhtmltopdf
+      wkhtmltopdf_installation: "{{ test_installation }}"
+      wkhtmltopdf_version: "{{ test_version }}"
 
     - role: tests
       tags: test

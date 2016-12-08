@@ -4,5 +4,5 @@
 # Debian variables.
 #
 
-wkhtmltopdf_installation: source
-wkhtmltopdf_version: 0.12.4
+test_installation: source
+test_version: 0.12.4
