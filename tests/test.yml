@@ -25,7 +25,7 @@
       with_first_found:
         - skip: true
           files:
-            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
             - "{{ ansible_distribution | lower }}.yml"
             - "{{ ansible_os_family | lower }}.yml"
 
