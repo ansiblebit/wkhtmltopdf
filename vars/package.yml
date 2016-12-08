@@ -4,5 +4,5 @@
 # default values for variable specific to the package installation.
 #
 
-wkhtmltopdf_package: "wkhtmltopdf-{{ wkhtmltopdf_version }}_linux-{{ ansible_distribution_version }}-"{{ ansible_architecture == x86_64 | ternary(amd64, i386) }}.deb"
+wkhtmltopdf_package: "wkhtmltopdf-{{ wkhtmltopdf_version }}_linux-{{ ansible_distribution_release }}-"{{ ansible_architecture == x86_64 | ternary(amd64, i386) }}.deb"
 wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}"
