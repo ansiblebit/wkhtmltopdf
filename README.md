@@ -39,6 +39,7 @@ it has diverged significantly from the original work.
 - **wkhtmltopdf_installation**: installation process (`package` or `source`).
 - **wkhtmltopdf_version**: version to be installed.
 - **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
+- **wkhtmltopdf_user**: account used to build the software.
 
 
 ### build
@@ -56,7 +57,6 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
-- **wkhtmltopdf_user**: account used to build the software.
 
 
 ## Dependencies

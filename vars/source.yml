@@ -20,7 +20,6 @@ wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtm
 wkhtmltopdf_force_build: no
 
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
-wkhtmltopdf_user: "{{ ansible_env.USER }}"
 
 wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
 wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
