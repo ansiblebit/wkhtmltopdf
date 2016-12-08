@@ -71,7 +71,6 @@
     dest="{{ wkhtmltopdf_dir_install }}/{{ item.dest }}"
     owner=root
     group=root
-    mode=0755
     state=link
   become: yes
   with_items:
