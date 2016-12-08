@@ -6,7 +6,6 @@
 
 wkhtmltopdf_architecture: amd64
 
-wkhtmltopdf_build: tarball
 wkhtmltopdf_build_dependencies:
   - build-essential
   - libssl-dev

@@ -2,6 +2,7 @@
 # file: wkhtmltopdf/defaults/main.yml
 #
 
+wkhtmltopdf_build: tarball
 wkhtmltopdf_installation: package
 wkhtmltopdf_version: 0.12.4
 
