@@ -4,8 +4,19 @@
 # tasks to install wkhtmltopdf using package.
 #
 
+- name: package | download
+  get_url:
+    url="{{ wkhtmltopdf_download_url }}"
+    dest="{{ ansible_env.HOME }}/{{ wkhtmltopdf_package }}"
+    owner="{{ wkhtmltopdf_user }}"
+    group="{{ wkhtmltopdf_user }}"
+    mode=0440
+    validate_certs=no
+  become: yes
+
 - name: package | installation
   apt:
-    deb="{{ wkhtmltopdf_download_url }}"
+    deb="{{ ansible_env.HOME }}/{{ wkhtmltopdf_package }}"
     state=present
+  become: yes
   tags: installation
