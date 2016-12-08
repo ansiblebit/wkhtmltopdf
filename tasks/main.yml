@@ -9,5 +9,5 @@
 - include: validation.yml
   tags: validation
 
-- include: "{{ wkhtmltopdf_installation }}/main.yml
+- include: "{{ wkhtmltopdf_installation }}/main.yml"
   tags: installation
