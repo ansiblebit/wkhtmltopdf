@@ -10,7 +10,7 @@
   when: "{{ wkhtmltopdf_mm_version }} != 0.12"
 
 - name: verify wkhtmltopdf is installed
-  shell: which wkhtmltopdf | grep '/usr/local/bin/wkhtmltopdf'
+  shell: "which wkhtmltopdf | grep '{{ wkhtmltopdf_dir_install }}/wkhtmltopdf'"
   changed_when: false
 
 - name: verify correct wkhtmltopdf version is installed
