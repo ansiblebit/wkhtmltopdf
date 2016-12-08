@@ -4,6 +4,16 @@
 # tasks to install wkhtmltopdf using package.
 #
 
+- name: package | ensure wkhtmltopdf_installation package is possible for wkhtmltopdf_version
+  fail:
+    msg="wkhtmltopdf_installation package only possible on 0.12.2 and 0.12.1"
+  when: wkhtmltopdf_version != '0.12.2' and wkhtmltopdf_version != '0.12.1'
+
+- name: package | ensure wkhtmltopdf_installation package is possible for distribution version
+  fail:
+    msg="wkhtmltopdf_installation package only possible on ubuntu/trusty+precise or debian/wheezy"
+  when: wkhtmltopdf_installation == 'package' and ansible_distribution_release not in ['precise', 'trusty', 'wheezy' ]
+
 - name: package | download
   get_url:
     url="{{ wkhtmltopdf_download_url }}"
