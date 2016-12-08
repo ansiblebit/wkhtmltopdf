@@ -60,4 +60,5 @@
       wkhtmltopdf_version: "{{ test_version }}"
 
     - role: tests
+      wkhtmltopdf_version: "{{ test_version }}"
       tags: test
