@@ -31,6 +31,8 @@
 
 - name: build | setup chroot environment
   shell: scripts/build.py setup-schroot-generic
+  register: task_setup_chroot
+  changed_when: not task_setup_chroot.rc.stdout.find('skipped')
   args:
     chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
@@ -39,8 +41,6 @@
 
 - name: build | build binaries
   shell: "scripts/build.py linux-generic-{{ wkhtmltopdf_architecture }}"
-  register: task_build_binaries
-  changed_when: not task_build_binaries.rc.stdout.find('skipped')
   args:
     chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
