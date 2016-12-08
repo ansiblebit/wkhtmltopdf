@@ -46,6 +46,13 @@
             - "{{ ansible_distribution | lower }}.yml"
             - "{{ ansible_os_family | lower }}.yml"
 
+    - debug:
+        var="{{ item }}"
+      when: "{{ item }} is defined"
+      with_items:
+        - test_installation
+        - test_version
+
   roles:
     - role: wkhtmltopdf
       wkhtmltopdf_installation: "{{ test_installation }}"
