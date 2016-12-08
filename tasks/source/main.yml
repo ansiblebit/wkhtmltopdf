@@ -4,6 +4,23 @@
 # tasks to install wkhtmltopdf using source.
 #
 
+- name: build | ensure build mandatory variables are set
+  fail:
+    msg="{{ item }} is a mandatory variable"
+  when: "{{ item }} is not defined"
+  with_items:
+    - wkhtmltopdf_architecture
+    - wkhtmltopdf_build
+    - wkhtmltopdf_build_dependencies
+    - wkhtmltopdf_dir_chroot
+    - wkhtmltopdf_dir_install
+    - wkhtmltopdf_dir_source
+    - wkhtmltopdf_dir_source_version
+    - wkhtmltopdf_download_url
+    - wkhtmltopdf_force_build
+    - wkhtmltopdf_slug
+    - wkhtmltopdf_tarball
+
 - name: build | install build dependencies
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
   with_items:
