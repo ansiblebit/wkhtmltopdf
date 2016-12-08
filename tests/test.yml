@@ -21,6 +21,14 @@
 
   pre_tasks:
     - debug:
+        var="{{ item }}"
+      when: "{{ item }} is defined"
+      with_items:
+        - ansible_os_family
+        - ansible_distribution
+        - ansible_distribution_release
+
+    - debug:
         msg="loading test variables from vars/{{ item }}"
       with_first_found:
         - skip: true
