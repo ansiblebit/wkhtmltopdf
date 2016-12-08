@@ -1,0 +1,11 @@
+---
+# file: wkhtmltopdf/tasks/package/main.yml
+#
+# tasks to install wkhtmltopdf using package.
+#
+
+- name: package | installation
+  apt:
+    deb="{{ wkhtmltopdf_download_url }}"
+    state=present
+  tags: installation
