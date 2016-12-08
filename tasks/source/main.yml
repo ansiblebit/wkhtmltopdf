@@ -39,6 +39,8 @@
 
 - name: build | build binaries
   shell: "scripts/build.py linux-generic-{{ wkhtmltopdf_architecture }}"
+  register: task_build_binaries
+  changed_when: not task_build_binaries.rc.stdout.find('skipped')
   args:
     chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
@@ -48,7 +50,7 @@
 
 - name: build | copy binaries
   copy:
-    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-amd64/app/bin"
+    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-amd64/app/bin/*"
     dest="{{ wkhtmltopdf_dir_install }}"
     owner=root
     group=root
