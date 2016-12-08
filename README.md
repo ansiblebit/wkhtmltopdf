@@ -86,8 +86,25 @@ This option is only available for versions 0.12.1 and 0.12.2 on:
 
 ### source
 
+You can build from source using a `tarball` or `git`.
+
+For `tarball`:
+
     - hosts: servers
       vars:
+        wkhtmltopdf_build: tarball
+        wkhtmltopdf_installation: source
+    
+      roles:
+         - role: ansiblebit.wkhtmltopdf
+
+For `git`:
+
+    - hosts: servers
+      vars:
+        git_version: 2.11.0
+
+        wkhtmltopdf_build: git
         wkhtmltopdf_installation: source
     
       roles:
