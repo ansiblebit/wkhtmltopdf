@@ -69,19 +69,19 @@ Variables used in the `build` installation process.
 ### package
 
 This option is only available for versions 0.12.1 and 0.12.2 on:
-
 - ubuntu/trusty
 - ubuntu/precise
 - debian/wheezy
 
+```
+- hosts: servers
+  vars:
+    wkhtmltopdf_installation: package
+    wkhtmltopdf_version: 0.12.1
 
-    - hosts: servers
-      vars:
-        wkhtmltopdf_installation: package
-        wkhtmltopdf_version: 0.12.1
-    
-      roles:
-         - role: ansiblebit.wkhtmltopdf
+  roles:
+     - role: ansiblebit.wkhtmltopdf
+```
 
 
 ### source
