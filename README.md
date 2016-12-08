@@ -36,6 +36,7 @@ it has diverged significantly from the original work.
 ## Role Variables
 
 - **debug**: flag to run debug tasks.
+- **wkhtmltopdf_dir_install**: directory where the wkhtmltox commands will be installed.
 - **wkhtmltopdf_installation**: installation process (`package` or `source`).
 - **wkhtmltopdf_version**: version to be installed.
 - **wkhtmltopdf_mm_version**: major and minor version to be installed (no need to define).
@@ -50,7 +51,6 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_build_dependencies**: list of packages needed to build the software.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
-- **wkhtmltopdf_dir_install**: directory where the wkhtmltox commands will be installed.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
 - **wkhtmltopdf_download_url**: URL to download tarball.
@@ -66,9 +66,46 @@ Variables used in the `build` installation process.
 
 ## Playbooks
 
+### package
+
+This option is only available for versions 0.12.1 and 0.12.2 on:
+
+- ubuntu/trusty
+- ubuntu/precise
+- debian/wheezy
+
+
     - hosts: servers
       vars:
-        see tests/vars/vagrant.yml
+        wkhtmltopdf_installation: package
+        wkhtmltopdf_version: 0.12.1
+    
+      roles:
+         - role: ansiblebit.wkhtmltopdf
+
+
+### source
+
+You can build from source using a `tarball` or `git`.
+
+For `tarball`:
+
+    - hosts: servers
+      vars:
+        wkhtmltopdf_build: tarball
+        wkhtmltopdf_installation: source
+    
+      roles:
+         - role: ansiblebit.wkhtmltopdf
+
+For `git`:
+
+    - hosts: servers
+      vars:
+        git_version: 2.11.0
+
+        wkhtmltopdf_build: git
+        wkhtmltopdf_installation: source
     
       roles:
          - role: ansiblebit.wkhtmltopdf

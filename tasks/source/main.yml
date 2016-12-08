@@ -31,6 +31,8 @@
 
 - name: build | setup chroot environment
   shell: scripts/build.py setup-schroot-generic
+  register: task_setup_chroot
+  changed_when: not task_setup_chroot.stdout.find('skipped')
   args:
     chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
@@ -39,6 +41,8 @@
 
 - name: build | build binaries
   shell: "scripts/build.py linux-generic-{{ wkhtmltopdf_architecture }}"
+  register: task_build
+  changed_when: not task_build.stdout.find('Nothing to be done')
   args:
     chdir: "{{ wkhtmltopdf_dir_source_version }}"
   environment:
@@ -48,9 +52,29 @@
 
 - name: build | copy binaries
   copy:
-    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-amd64/app/bin"
+    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-{{ wkhtmltopdf_architecture }}/app/bin/{{ item }}"
     dest="{{ wkhtmltopdf_dir_install }}"
+    remote_src=yes
     owner=root
     group=root
     mode=0755
   become: yes
+  with_items:
+    - wkhtmltoimage
+    - wkhtmltopdf
+    - "libwkhtmltox.so.{{ wkhtmltopdf_version }}"
+  become: yes
+
+- name: build | create symlinks
+  file:
+    src="{{ wkhtmltopdf_dir_install }}/{{ item.src }}"
+    dest="{{ wkhtmltopdf_dir_install }}/{{ item.dest }}"
+    owner=root
+    group=root
+    state=link
+  become: yes
+  with_items:
+    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: "libwkhtmltox.so.{{ wkhtmltopdf_version.split('.')[0] }}" }
+    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: "libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}" }
+    - { src: 'wkhtmltopdf', dest: "wkhtmltopdf-{{ wkhtmltopdf_version }}" }
+    - { src: 'wkhtmltoimage', dest: "wkhtmltoimage-{{ wkhtmltopdf_version }}" }

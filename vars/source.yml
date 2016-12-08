@@ -13,7 +13,6 @@ wkhtmltopdf_build_dependencies:
   - xorg
 
 wkhtmltopdf_dir_chroot: /var/chroot
-wkhtmltopdf_dir_install: /usr/bin
 wkhtmltopdf_dir_source: "{{ ansible_env.HOME }}"
 wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtmltopdf_version }}"
 

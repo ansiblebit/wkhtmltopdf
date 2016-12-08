@@ -4,6 +4,15 @@
 # Test tasks to verify role execution.
 #
 
-- fail:
+- name: verify value of wkhtmltopdf_mm_version variable
+  fail:
     msg="wkhtmltopdf_mm_version is {{ wkhtmltopdf_mm_version }} instead of 0.12"
   when: "{{ wkhtmltopdf_mm_version }} != 0.12"
+
+- name: verify wkhtmltopdf is installed
+  shell: "which wkhtmltopdf | grep '{{ wkhtmltopdf_dir_install }}/wkhtmltopdf'"
+  changed_when: false
+
+- name: verify correct wkhtmltopdf version is installed
+  shell: "wkhtmltopdf --version | grep 'wkhtmltopdf {{ wkhtmltopdf_version }} (with patched qt)'"
+  changed_when: false

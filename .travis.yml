@@ -1,4 +1,5 @@
 language: python
+dist: trusty
 sudo: yes
 
 matrix:
@@ -24,7 +25,7 @@ notifications:
       - "%{elapsed_time} : %{duration}"
       - "%{message}"
     rooms:
-      secure: UsNysPQO1Rb1xxi47UJEmaGosstOdrtUNzlbPJL0EBlSdiTKVYwF67KithyJh1JxqGqd346bLTGq9t6ENbEwk6B6mNfp6mH5bq6A15vLagyLqSNOOpSsOQloOa2Lm5+kBB3da5XCqyeqQ7PCg1vE152XArBLSoZyx8Tll1tHTxY+ZODchJbo97fosrJ18YLCy4TE6eYL4O4vBEHU+KG8wQ80QMKD2J8BZ8A+kQBkYnGfLUeemYYzgfyMMQbf2AQ0jUF6lM/ekSdOZ7SAkpSKc9gDIqImdtXBQUbopWo9XhdyTFMRxi/+WqArWHhwE0qC/i7zjg6fv0Uq1JZfmTCMyl6g+YIzy4Sl+rvCypJMT/nhhhZeT4lNmsdZacpgt5rXkc96nhh2GVFvOWpfTh6xZs97f6iWY/lmv3xj0WOhHfbnKbKG6/PKUh+vp9OSX/ueN+KTxtkA1f2yD4UHxtokICtnHK7KiU6bnnrHg/lhP0Ry0voQzQ2eQsEZk+p7H/d+NvC/Vxr3na5DaKq5Y9AfiiwjUcwd3E2vWFLifRucKHNwNrwOskuTgAkDYNv4BS64rW6y9jvWN6hRoaDR5EI1dPM/iRxzmKx19z13AHFXStmN1ERguo/VIVQqiGF0KYBdyaF4Z0tgdtCCbygDauuGgHYjSnE6s/GvS3YJMBFGidU=
+      secure: BAUeKtpOtcYR6ERQDHXrbgOUWUubqFcyG6bs5zjzJ4RkFLNBnqCwESICepiYf6+/SJXzv7wJ7Zjc39bAmROFbmvHR+jSOaFmeoJ0mfez/ule9lo3Bq5usprwF2QV11XkNm7YSTQxKyQ+Vc4CTk1z8pGf9DCc6k0c/iC9tWSKwDY8K83uJXRgQjCs9QegNKOD26R4gtURrWcp3eC9dqEavc6lNzk/K4XSHZuvjigXafb1twP745cp6Ky0jNAhZNLe+WxOHZbXuZfOp8Cq6OCcOUcdD++lyvN1RcOtqaRynCvF1DRJzx96qI8wLQFxMgA6hVQ2y++1b+dPA0PxGRbOXPLiqpnMvdK+MoTVc8u+tkGwP8f7oa/UCjUTdDqR+a6VR0/mpUmrt+GEMvGcU7uCxXZtfM42L5soEZ/5r8byrfdsIg2bPQN1ozgZLNmr0b0gYPj0vJyVBFyIGpeoGvwKdjj76QOsdPOl/bCjLr8lTyjQEbN6UcKC1c+a3dFgukFFCZIPOnAw26JuOhCoA5LWWbMN9C89bIMPZDShkVtRVCs3a3wAG0jVh/ZznxJy/RaZvKcg6xT9dwwKjhUiai6S+UCr73JFGedWrgoxGS4aKfpRwnCCBF0r05VxZRRNzMRTK8fA9DJ2Tc+bZjL226jkn4HLd76f8xAJRCovApmCp30=
     on_success: always
     on_failure: always
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

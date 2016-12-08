@@ -9,6 +9,7 @@
     - raw: sudo apt-get update -qq && sudo apt-get install -qq python2.7
       when: playbook_python2 is defined and
             playbook_python2
+      changed_when: false
 
 
 - name: tests play
@@ -20,17 +21,44 @@
     git_version: 2.11.0
 
   pre_tasks:
+    - debug:
+        var="{{ item }}"
+      when: "{{ item }} is defined"
+      with_items:
+        - ansible_os_family
+        - ansible_distribution
+        - ansible_distribution_release
+
+    - debug:
+        msg="loading test variables from vars/{{ item }}"
+      with_first_found:
+        - skip: true
+          files:
+            - "vars/{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
+            - "vars/{{ ansible_distribution | lower }}.yml"
+            - "vars/{{ ansible_os_family | lower }}.yml"
+
     - name: include OS family/distribution specific variables
       include_vars: "{{ item }}"
       with_first_found:
         - skip: true
           files:
-            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
-            - "{{ ansible_distribution | lower }}.yml"
-            - "{{ ansible_os_family | lower }}.yml"
+            - "vars/{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
+            - "vars/{{ ansible_distribution | lower }}.yml"
+            - "vars/{{ ansible_os_family | lower }}.yml"
+
+    - debug:
+        var="{{ item }}"
+      when: "{{ item }} is defined"
+      with_items:
+        - test_installation
+        - test_version
 
   roles:
     - role: wkhtmltopdf
+      wkhtmltopdf_installation: "{{ test_installation }}"
+      wkhtmltopdf_version: "{{ test_version }}"
 
     - role: tests
+      wkhtmltopdf_version: "{{ test_version }}"
       tags: test

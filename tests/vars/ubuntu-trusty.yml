@@ -4,5 +4,5 @@
 # Ubuntu Trusty variables.
 #
 
-wkhtmltopdf_installation: package
-wkhtmltopdf_version: 0.12.1
+test_installation: package
+test_version: 0.12.1
