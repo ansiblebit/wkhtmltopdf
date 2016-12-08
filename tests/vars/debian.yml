@@ -1,0 +1,8 @@
+---
+# file: wkhtmltopdf/tests/vars/debian.yml
+#
+# Debian variables.
+#
+
+wkhtmltopdf_installation: source
+wkhtmltopdf_version: 0.12.4

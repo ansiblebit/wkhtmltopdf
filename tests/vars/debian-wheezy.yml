@@ -1,0 +1,8 @@
+---
+# file: wkhtmltopdf/tests/vars/debian-wheezy.yml
+#
+# Debian Wheezy variables.
+#
+
+wkhtmltopdf_installation: package
+wkhtmltopdf_version: 0.12.1
