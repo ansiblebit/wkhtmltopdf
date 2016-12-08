@@ -67,16 +67,16 @@
 
 - name: build | create symlinks
   file:
-    src="{{ wkhtmltopdf_dir_install }}/{{ item.key }}"
-    dest="{{ wkhtmltopdf_dir_install }}/{{ item.value }}"
+    src="{{ wkhtmltopdf_dir_install }}/{{ item.src }}"
+    dest="{{ wkhtmltopdf_dir_install }}/{{ item.dest }}"
     owner=root
     group=root
     mode=0755
     state=link
   become: yes
-  with_items:
-    - "{ 'libwkhtmltox.so': 'libwkhtmltox.so.{{ wkhtmltopdf_version }}' }"
-    - "{ 'libwkhtmltox.so': 'libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:1])}}' }"
-    - "{ 'libwkhtmltox.so': 'libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:2])}}' }"
-    - "{ 'wkhtmltopdf': 'wkhtmltopdf-{{ wkhtmltopdf_version }}' }"
-    - "{ 'wkhtmltoimage': 'wkhtmltoimage-{{ wkhtmltopdf_version }}' }"
+  with_dict:
+    - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ wkhtmltopdf_version }}" }
+    - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ wkhtmltopdf_version.split('.')[0] }}" }
+    - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}" }
+    - { src: 'wkhtmltopdf', dest: "wkhtmltopdf-{{ wkhtmltopdf_version }}" }
+    - { src: 'wkhtmltoimage', dest: "wkhtmltoimage-{{ wkhtmltopdf_version }}" }
