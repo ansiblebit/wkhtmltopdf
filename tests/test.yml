@@ -18,13 +18,19 @@
   vars:
     debug: yes
     git_version: 2.11.0
-    wkhtmltopdf_installation: source
-    wkhtmltopdf_build: tarball
-    wkhtmltopdf_force_build: yes
+
+  pre_tasks:
+    - name: include OS family/distribution specific variables
+      include_vars: "{{ item }}"
+      with_first_found:
+        - skip: true
+          files:
+            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+            - "{{ ansible_distribution | lower }}.yml"
+            - "{{ ansible_os_family | lower }}.yml"
 
   roles:
     - role: wkhtmltopdf
 
     - role: tests
       tags: test
-
