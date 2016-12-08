@@ -20,6 +20,15 @@
     git_version: 2.11.0
 
   pre_tasks:
+    - debug:
+        msg="loading test variables from vars/{{ item }}"
+      with_first_found:
+        - skip: true
+          files:
+            - "{{ ansible_distribution | lower }}-{{ ansible_distribution_release | lower }}.yml"
+            - "{{ ansible_distribution | lower }}.yml"
+            - "{{ ansible_os_family | lower }}.yml"
+
     - name: include OS family/distribution specific variables
       include_vars: "{{ item }}"
       with_first_found:
