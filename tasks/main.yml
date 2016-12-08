@@ -6,6 +6,8 @@
   when: debug | default(false)
   tags: debug
 
+- include_vars: "{{ wkhtmltopdf_installation }}.yml"
+
 - include: validation.yml
   tags: validation
 
