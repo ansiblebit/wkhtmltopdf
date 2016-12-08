@@ -6,11 +6,14 @@
 
 wkhtmltopdf_architecture: amd64
 
+wkhtmltopdf_build_args: "linux-generic-{{ wkhtmltopdf_architecture }}"
 wkhtmltopdf_build_dependencies:
   - build-essential
   - libssl-dev
   - openssl
   - xorg
+
+wkhtmltopdf_chroot_args: setup-schroot-generic
 
 wkhtmltopdf_dir_chroot: /var/chroot
 wkhtmltopdf_dir_source: "{{ ansible_env.HOME }}"
