@@ -74,7 +74,7 @@
     mode=0755
     state=link
   become: yes
-  with_dict:
+  with_items:
     - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ wkhtmltopdf_version }}" }
     - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ wkhtmltopdf_version.split('.')[0] }}" }
     - { src: 'libwkhtmltox.so', dest: "libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}" }
