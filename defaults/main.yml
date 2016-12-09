@@ -9,3 +9,33 @@ wkhtmltopdf_user: "{{ ansible_env.USER }}"
 wkhtmltopdf_version: 0.12.4
 
 wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
+
+
+## package
+
+wkhtmltopdf_package: "wkhtmltox-{{ wkhtmltopdf_version }}_linux-{{ ansible_distribution_release }}-{{ (ansible_architecture == 'x86_64') | ternary('amd64', 'i386') }}.deb"
+wkhtmltopdf_package_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_package }}"
+
+
+## source
+
+wkhtmltopdf_architecture: amd64
+
+wkhtmltopdf_build_args: "linux-generic-{{ wkhtmltopdf_architecture }}"
+
+wkhtmltopdf_chroot_args: setup-schroot-generic
+
+wkhtmltopdf_default_version: yes
+wkhtmltopdf_dir_chroot: /var/chroot
+wkhtmltopdf_dir_source: "{{ ansible_env.HOME }}"
+wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtmltopdf_version }}"
+
+wkhtmltopdf_force_build: no
+
+wkhtmltopdf_source_dependencies:
+  - xorg
+
+wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
+
+wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
+wkhtmltopdf_tarball_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"

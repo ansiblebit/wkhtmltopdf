@@ -4,35 +4,33 @@
 # tasks to install wkhtmltopdf using source.
 #
 
-- name: build | ensure build mandatory variables are set
-  fail:
-    msg="{{ item }} is a mandatory variable"
-  when: "{{ item }} is not defined"
-  with_items:
-    - wkhtmltopdf_architecture
-    - wkhtmltopdf_build
-    - wkhtmltopdf_build_args
-    - wkhtmltopdf_build_dependencies
-    - wkhtmltopdf_chroot_args
-    - wkhtmltopdf_dir_chroot
-    - wkhtmltopdf_dir_install
-    - wkhtmltopdf_dir_source
-    - wkhtmltopdf_dir_source_version
-    - wkhtmltopdf_download_url
-    - wkhtmltopdf_force_build
-    - wkhtmltopdf_slug
-    - wkhtmltopdf_tarball
+- include: debug.yml
+  when: debug | default(false)
+  tags: debug
+
+- include: validation.yml
+  tags: validation
+
+- name: build | is this desired version installed? => task_version_installed
+  shell: "test -e {{ wkhtmltopdf_dir_install }}/wkhtmltopdf-{{ wkhtmltopdf_version }}"
+  register: task_version_installed
+  changed_when: no
+  failed_when: no
 
 - name: build | install build dependencies
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
-  with_items:
-    - "{{ wkhtmltopdf_build_dependencies }}"
   become: yes
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
+  with_items:
+    - "{{ wkhtmltopdf_source_dependencies }}"
 
-- include: "{{ wkhtmltopdf_build }}.yml"
+- name: build | download and install source (using tarball or git)
+  include: "{{ wkhtmltopdf_build }}.yml"
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
 
 - name: build | setup chroot environment
-  shell: "scripts/build.py {{ wkhtmltopdf_chroot_args }}"
+  shell: "python2.7 scripts/build.py {{ wkhtmltopdf_chroot_args }}"
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
   register: task_setup_chroot
   changed_when: not task_setup_chroot.stdout.find('skipped')
   args:
@@ -42,7 +40,8 @@
   become: yes
 
 - name: build | build binaries
-  shell: "scripts/build.py { wkhtmltopdf_build_args }}"
+  shell: "python2.7 scripts/build.py {{ wkhtmltopdf_build_args }}"
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
   register: task_build
   changed_when: not task_build.stdout.find('Nothing to be done')
   args:
@@ -52,22 +51,22 @@
   become_user: "{{ wkhtmltopdf_user }}"
   become: yes
 
-- name: build | copy binaries
+- name: build | install version specific binaries
   copy:
-    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-{{ wkhtmltopdf_architecture }}/app/bin/{{ item }}"
-    dest="{{ wkhtmltopdf_dir_install }}"
+    src="{{ wkhtmltopdf_dir_source_version }}/static-build/linux-generic-{{ wkhtmltopdf_architecture }}/app/bin/{{ item.src }}"
+    dest="{{ wkhtmltopdf_dir_install }}/{{ item.dest }}"
     remote_src=yes
     owner=root
     group=root
     mode=0755
   become: yes
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
   with_items:
-    - wkhtmltoimage
-    - wkhtmltopdf
-    - "libwkhtmltox.so.{{ wkhtmltopdf_version }}"
-  become: yes
+    - { src: 'wkhtmltoimage', dest: "wkhtmltoimage-{{ wkhtmltopdf_version }}" }
+    - { src: 'wkhtmltopdf', dest: "wkhtmltopdf-{{ wkhtmltopdf_version }}" }
+    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: "libwkhtmltox.so.{{ wkhtmltopdf_version }}" }
 
-- name: build | create symlinks
+- name: build | create default version symlinks
   file:
     src="{{ wkhtmltopdf_dir_install }}/{{ item.src }}"
     dest="{{ wkhtmltopdf_dir_install }}/{{ item.dest }}"
@@ -75,8 +74,8 @@
     group=root
     state=link
   become: yes
+  when: wkhtmltopdf_default_version
   with_items:
-    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: "libwkhtmltox.so.{{ wkhtmltopdf_version.split('.')[0] }}" }
-    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: "libwkhtmltox.so.{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}" }
-    - { src: 'wkhtmltopdf', dest: "wkhtmltopdf-{{ wkhtmltopdf_version }}" }
-    - { src: 'wkhtmltoimage', dest: "wkhtmltoimage-{{ wkhtmltopdf_version }}" }
+    - { src: "wkhtmltopdf-{{ wkhtmltopdf_version }}", dest: 'wkhtmltopdf' }
+    - { src: "wkhtmltoimage-{{ wkhtmltopdf_version }}", dest: 'wkhtmltoimage' }
+    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: 'libwkhtmltox.so' }

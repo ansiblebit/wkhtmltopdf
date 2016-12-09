@@ -9,7 +9,22 @@
 - include: validation.yml
   tags: validation
 
-- include_vars: "{{ wkhtmltopdf_installation }}.yml"
+- name: is wkhtmltopdf installed? => task_installed
+  shell: /bin/which wkhtmltopdf
+  register: task_installed
+  changed_when: no
+  failed_when: no
+  environment:
+    PATH: "${PATH}:{{ wkhtmltopdf_dir_install }}/bin"
+
+- name: desired version is installed? => task_already_installed
+  shell: "wkhtmltopdf --version | grep 'wkhtmltopdf {{ wkhtmltopdf_version }} (with patched qt)'"
+  when: (task_installed is defined and task_installed.rc == 0)
+  register: task_already_installed
+  changed_when: no
+  failed_when: no
 
 - include: "{{ wkhtmltopdf_installation }}/main.yml"
+  when: (task_installed is defined and task_installed.rc != 0) or
+        (task_already_installed is defined and task_already_installed.rc != 0)
   tags: installation

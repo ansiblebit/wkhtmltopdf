@@ -50,20 +50,26 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_architecture**: architecture (`i386` or `amd64`).
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_build_args**: argument to be passed to `build.py` in order to build the software.
-- **wkhtmltopdf_build_dependencies**: list of packages needed to build the software.
 - **wkhtmltopdf_chroot_args**: argument to be passed to `build.py` in order to setup the chroot environment.
+- **wkhtmltopdf_default_version**: flag to indicate if this version is the default one.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
-- **wkhtmltopdf_download_url**: URL to download tarball.
+- **wkhtmltopdf_source_dependencies**: list of packages needed to build the software.
+- **wkhtmltopdf_tarball_download_url**: URL to download tarball.
 - **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
 
 
+### package
+
+- **wkhtmltopdf_package_download_url**: URL to download debian package.
+
+
 ## Dependencies
 
-- [ansiblebit/git]
+- [ansiblebit/git] if you want to install using `wkhtmltopdf_installation=source` and `wkhtmltopdf_build=git`
 
 
 ## Playbooks
@@ -110,7 +116,8 @@ For `git`:
         wkhtmltopdf_installation: source
     
       roles:
-         - role: ansiblebit.wkhtmltopdf
+        - role: ansiblebit.git
+        - role: ansiblebit.wkhtmltopdf
 
 
 ## Tags

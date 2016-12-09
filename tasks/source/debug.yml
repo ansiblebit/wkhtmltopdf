@@ -1,0 +1,26 @@
+---
+# file: wkhtmltopdf/tasks/build/debug.yml
+#
+# debug tasks.
+#
+
+- name: debug build variables
+  debug:
+    var="{{ item }}"
+  when: "{{ item }} is defined"
+  with_items:
+    - wkhtmltopdf_architecture
+    - wkhtmltopdf_build
+    - wkhtmltopdf_build_args
+    - wkhtmltopdf_chroot_args
+    - wkhtmltopdf_default_version
+    - wkhtmltopdf_dir_chroot
+    - wkhtmltopdf_dir_install
+    - wkhtmltopdf_dir_source
+    - wkhtmltopdf_dir_source_version
+    - wkhtmltopdf_force_build
+    - wkhtmltopdf_source_dependencies
+    - wkhtmltopdf_slug
+    - wkhtmltopdf_tarball
+    - wkhtmltopdf_tarball_download_url
+    - wkhtmltopdf_user
