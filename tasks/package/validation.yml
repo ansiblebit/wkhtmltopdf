@@ -13,3 +13,11 @@
   fail:
     msg="wkhtmltopdf_installation package only possible on ubuntu/trusty+precise or debian/wheezy"
   when: wkhtmltopdf_installation == 'package' and ansible_distribution_release not in ['precise', 'trusty', 'wheezy' ]
+
+- name: build | ensure build mandatory variables are set
+  fail:
+    msg="{{ item }} is a mandatory variable"
+  when: "{{ item }} is not defined"
+  with_items:
+    - wkhtmltopdf_package
+    - wkhtmltopdf_package_download_url
