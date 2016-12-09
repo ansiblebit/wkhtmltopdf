@@ -22,11 +22,6 @@ wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm
 wkhtmltopdf_architecture: amd64
 
 wkhtmltopdf_build_args: "linux-generic-{{ wkhtmltopdf_architecture }}"
-wkhtmltopdf_build_dependencies:
-  - build-essential
-  - libssl-dev
-  - openssl
-  - xorg
 
 wkhtmltopdf_chroot_args: setup-schroot-generic
 

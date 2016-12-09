@@ -14,7 +14,7 @@
 - include: "{{ wkhtmltopdf_build }}.yml"
 
 - name: build | setup chroot environment
-  shell: "scripts/build.py {{ wkhtmltopdf_chroot_args }}"
+  shell: "python2.7 scripts/build.py {{ wkhtmltopdf_chroot_args }}"
   register: task_setup_chroot
   changed_when: not task_setup_chroot.stdout.find('skipped')
   args:
@@ -24,7 +24,7 @@
   become: yes
 
 - name: build | build binaries
-  shell: "scripts/build.py {{ wkhtmltopdf_build_args }}"
+  shell: "python2.7 scripts/build.py {{ wkhtmltopdf_build_args }}"
   register: task_build
   changed_when: not task_build.stdout.find('Nothing to be done')
   args:
