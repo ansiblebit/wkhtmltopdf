@@ -7,7 +7,7 @@
 - name: debug build variables
   debug:
     var="{{ item }}"
-  when: "{{ wkhtmltopdf_installation }} == 'build' and {{ item }} is defined"
+  when: "{{ item }} is defined"
   with_items:
     - wkhtmltopdf_architecture
     - wkhtmltopdf_build
