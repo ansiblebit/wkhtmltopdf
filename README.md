@@ -50,7 +50,6 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_architecture**: architecture (`i386` or `amd64`).
 - **wkhtmltopdf_build**: method to download software (`tarball`, `git`).
 - **wkhtmltopdf_build_args**: argument to be passed to `build.py` in order to build the software.
-- **wkhtmltopdf_build_dependencies**: list of packages needed to build the software.
 - **wkhtmltopdf_chroot_args**: argument to be passed to `build.py` in order to setup the chroot environment.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
@@ -63,7 +62,7 @@ Variables used in the `build` installation process.
 
 ## Dependencies
 
-- [ansiblebit/git]
+- [ansiblebit/git] if you want to install using `source` and `git`
 
 
 ## Playbooks
@@ -110,7 +109,8 @@ For `git`:
         wkhtmltopdf_installation: source
     
       roles:
-         - role: ansiblebit.wkhtmltopdf
+        - role: ansiblebit.git
+        - role: ansiblebit.wkhtmltopdf
 
 
 ## Tags

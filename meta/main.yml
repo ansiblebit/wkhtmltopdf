@@ -21,7 +21,4 @@ galaxy_info:
         - precise
   galaxy_tags:
     - wkhtmltopdf
-dependencies:
-  - role: ansiblebit.git
-    when: wkhtmltopdf_installation == 'source' and
-          wkhtmltopdf_build == 'git'
+dependencies: []
