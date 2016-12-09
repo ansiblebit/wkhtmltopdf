@@ -14,7 +14,7 @@ wkhtmltopdf_mm_version: "{{ '.'.join(wkhtmltopdf_version.split('.')[0:2]) }}"
 ## package
 
 wkhtmltopdf_package: "wkhtmltox-{{ wkhtmltopdf_version }}_linux-{{ ansible_distribution_release }}-{{ (ansible_architecture == 'x86_64') | ternary('amd64', 'i386') }}.deb"
-wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_package }}"
+wkhtmltopdf_package_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_package }}"
 
 
 ## source
@@ -35,4 +35,4 @@ wkhtmltopdf_force_build: no
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
 
 wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
-wkhtmltopdf_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
+wkhtmltopdf_tarball_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"

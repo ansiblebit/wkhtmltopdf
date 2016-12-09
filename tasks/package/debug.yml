@@ -9,5 +9,5 @@
     var="{{ item }}"
   when: "{{ item }} is defined"
   with_items:
-    - wkhtmltopdf_download_url
     - wkhtmltopdf_package
+    - wkhtmltopdf_package_download_url

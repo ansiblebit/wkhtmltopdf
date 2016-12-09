@@ -13,7 +13,7 @@
 
 - name: package | download
   get_url:
-    url="{{ wkhtmltopdf_download_url }}"
+    url="{{ wkhtmltopdf_package_download_url }}"
     dest="{{ ansible_env.HOME }}/{{ wkhtmltopdf_package }}"
     owner="{{ wkhtmltopdf_user }}"
     group="{{ wkhtmltopdf_user }}"

@@ -55,15 +55,20 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
-- **wkhtmltopdf_download_url**: URL to download tarball.
+- **wkhtmltopdf_tarball_download_url**: URL to download tarball.
 - **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
 
 
+### package
+
+- **wkhtmltopdf_package_download_url**: URL to download debian package.
+
+
 ## Dependencies
 
-- [ansiblebit/git] if you want to install using `source` and `git`
+- [ansiblebit/git] if you want to install using `wkhtmltopdf_installation=source` and `wkhtmltopdf_build=git`
 
 
 ## Playbooks
