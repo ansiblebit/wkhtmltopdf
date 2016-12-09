@@ -71,4 +71,4 @@
   with_items:
     - { src: "wkhtmltopdf-{{ wkhtmltopdf_version }}", dest: 'wkhtmltopdf' }
     - { src: "wkhtmltoimage-{{ wkhtmltopdf_version }}", dest: 'wkhtmltoimage' }
-    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: 'wkhtmltoimage' }
+    - { src: "libwkhtmltox.so.{{ wkhtmltopdf_version }}", dest: 'libwkhtmltox.so' }
