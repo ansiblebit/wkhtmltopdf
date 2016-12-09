@@ -11,12 +11,6 @@
 - include: validation.yml
   tags: validation
 
-- name: build | install build dependencies
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
-  with_items:
-    - "{{ wkhtmltopdf_build_dependencies }}"
-  become: yes
-
 - include: "{{ wkhtmltopdf_build }}.yml"
 
 - name: build | setup chroot environment
@@ -30,7 +24,7 @@
   become: yes
 
 - name: build | build binaries
-  shell: "scripts/build.py { wkhtmltopdf_build_args }}"
+  shell: "scripts/build.py {{ wkhtmltopdf_build_args }}"
   register: task_build
   changed_when: not task_build.stdout.find('Nothing to be done')
   args:
