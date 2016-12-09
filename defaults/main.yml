@@ -25,6 +25,7 @@ wkhtmltopdf_build_args: "linux-generic-{{ wkhtmltopdf_architecture }}"
 
 wkhtmltopdf_chroot_args: setup-schroot-generic
 
+wkhtmltopdf_default_version: yes
 wkhtmltopdf_dir_chroot: /var/chroot
 wkhtmltopdf_dir_source: "{{ ansible_env.HOME }}"
 wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtmltopdf_version }}"

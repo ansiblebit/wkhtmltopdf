@@ -13,6 +13,7 @@
     - wkhtmltopdf_build
     - wkhtmltopdf_build_args
     - wkhtmltopdf_chroot_args
+    - wkhtmltopdf_default_version
     - wkhtmltopdf_dir_chroot
     - wkhtmltopdf_dir_install
     - wkhtmltopdf_dir_source
