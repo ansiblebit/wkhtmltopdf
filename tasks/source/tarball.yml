@@ -6,7 +6,7 @@
 
 - name: build | tarball | download
   get_url:
-    url="{{ wkhtmltopdf_download_url }}"
+    url="{{ wkhtmltopdf_tarball_download_url }}"
     dest="{{ ansible_env.HOME }}/{{ wkhtmltopdf_tarball }}"
     owner="{{ wkhtmltopdf_user }}"
     group="{{ wkhtmltopdf_user }}"
