@@ -1,7 +1,7 @@
 ---
 # file: wkhtmltopdf/tasks/build/validation.yml
 #
-# debug tasks.
+# validation tasks.
 #
 
 - name: build | ensure build mandatory variables are set
