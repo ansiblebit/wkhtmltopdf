@@ -33,7 +33,17 @@ wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtm
 wkhtmltopdf_force_build: no
 
 wkhtmltopdf_source_dependencies:
-  - xorg
+  - fontconfig
+  - freetype
+  - glibc
+  - libstdc++
+  - libX11
+  - libXext
+  - libXrender
+  - openssl
+  - xorg-x11-fonts-Type1
+  - xorg-x11-fonts-75dpi
+  - zlib
 
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
 
