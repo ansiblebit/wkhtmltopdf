@@ -21,8 +21,7 @@
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
   become: yes
   when: (task_version_installed is defined and task_version_installed.rc != 0)
-  with_items:
-    - "{{ wkhtmltopdf_runtime_dependencies }}"
+  with_items: "{{ wkhtmltopdf_runtime_dependencies }}"
 
 - name: build | download and install source (using tarball or git)
   include: "{{ wkhtmltopdf_build }}.yml"
