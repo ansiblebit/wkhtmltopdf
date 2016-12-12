@@ -17,7 +17,7 @@
   changed_when: no
   failed_when: no
 
-- name: build | install build dependencies
+- name: build | install runtime dependencies
   action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
   become: yes
   when: (task_version_installed is defined and task_version_installed.rc != 0)
