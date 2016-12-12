@@ -19,7 +19,7 @@
     - wkhtmltopdf_dir_source
     - wkhtmltopdf_dir_source_version
     - wkhtmltopdf_force_build
-    - wkhtmltopdf_source_dependencies
+    - wkhtmltopdf_runtime_dependencies
     - wkhtmltopdf_slug
     - wkhtmltopdf_tarball
     - wkhtmltopdf_tarball_download_url

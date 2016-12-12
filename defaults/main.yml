@@ -32,7 +32,7 @@ wkhtmltopdf_dir_source_version: "{{ wkhtmltopdf_dir_source }}/wkhtmltox-{{ wkhtm
 
 wkhtmltopdf_force_build: no
 
-wkhtmltopdf_source_dependencies:
+wkhtmltopdf_runtime_dependencies:
   - fontconfig
   - freetype
   - glibc
