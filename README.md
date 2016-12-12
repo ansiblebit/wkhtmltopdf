@@ -55,9 +55,9 @@ Variables used in the `build` installation process.
 - **wkhtmltopdf_dir_chroot**: directory to setup chroot environment.
 - **wkhtmltopdf_dir_source**: directory where to store the source tarball.
 - **wkhtmltopdf_dir_source_version**: directory where to extract the tarball or clone the git repository.
-- **wkhtmltopdf_source_dependencies**: list of packages needed to build the software.
+- **wkhtmltopdf_force_build**: compile software.
+- **wkhtmltopdf_runtime_dependencies**: list of packages needed to run the software.
 - **wkhtmltopdf_tarball_download_url**: URL to download tarball.
-- **wkhtmltopdf_force_build**: .
 - **wkhtmltopdf_slug**: git repository slug to be cloned.
 - **wkhtmltopdf_tarball**: tarball basename.
 
