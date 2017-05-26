@@ -11,18 +11,17 @@
 - include: validation.yml
   tags: validation
 
+- name: build | install runtime dependencies
+  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
+  become: yes
+  when: (task_version_installed is defined and task_version_installed.rc != 0)
+  with_items: "{{ wkhtmltopdf_runtime_dependencies }}"
+
 - name: build | is this desired version installed? => task_version_installed
   shell: "test -e {{ wkhtmltopdf_dir_install }}/wkhtmltopdf-{{ wkhtmltopdf_version }}"
   register: task_version_installed
   changed_when: no
   failed_when: no
-
-- name: build | install build dependencies
-  action: "{{ ansible_pkg_mgr }} name={{ item }} state=present"
-  become: yes
-  when: (task_version_installed is defined and task_version_installed.rc != 0)
-  with_items:
-    - "{{ wkhtmltopdf_runtime_dependencies }}"
 
 - name: build | download and install source (using tarball or git)
   include: "{{ wkhtmltopdf_build }}.yml"
