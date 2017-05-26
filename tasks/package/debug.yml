@@ -7,7 +7,7 @@
 - name: debug package variables
   debug:
     var="{{ item }}"
-  when: "{{ item }} is defined"
+  when: item is defined
   with_items:
     - wkhtmltopdf_package
     - wkhtmltopdf_package_download_url

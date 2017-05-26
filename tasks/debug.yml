@@ -7,7 +7,7 @@
 - name: debug
   debug:
     var="{{ item }}"
-  when: "{{ item }} is defined"
+  when: item is defined
   with_items:
     - wkhtmltopdf_installation
     - wkhtmltopdf_mm_version
