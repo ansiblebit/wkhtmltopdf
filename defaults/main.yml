@@ -48,4 +48,4 @@ wkhtmltopdf_runtime_dependencies:
 wkhtmltopdf_slug: wkhtmltopdf/wkhtmltopdf
 
 wkhtmltopdf_tarball: "wkhtmltox-{{ wkhtmltopdf_version }}.tar.bz2"
-wkhtmltopdf_tarball_download_url: "http://download.gna.org/wkhtmltopdf/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
+wkhtmltopdf_tarball_download_url: "https://downloads.wkhtmltopdf.org/{{ wkhtmltopdf_mm_version }}/{{ wkhtmltopdf_version }}/{{ wkhtmltopdf_tarball }}"
