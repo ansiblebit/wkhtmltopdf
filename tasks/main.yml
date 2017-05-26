@@ -19,12 +19,12 @@
 
 - name: desired version is installed? => task_already_installed
   shell: "wkhtmltopdf --version | grep 'wkhtmltopdf {{ wkhtmltopdf_version }} (with patched qt)'"
-  when: (task_installed is defined and task_installed.rc == 0)
+  when: (task_installed.rc == 0 | default(no))
   register: task_already_installed
   changed_when: no
   failed_when: no
 
 - include: "{{ wkhtmltopdf_installation }}/main.yml"
-  when: (task_installed is defined and task_installed.rc != 0) or
-        (task_already_installed is defined and task_already_installed.rc != 0)
+  when: task_installed.rc != 0 | default(no) or
+        task_already_installed.rc != 0 | default(no)
   tags: installation
